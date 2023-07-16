@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montagem de Computador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #total {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Montagem de Computador</h1>
+    <table>
+        <tr>
+            <th>Componente</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Processador</td>
+            <td><input type="number" id="processador" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Placa Mãe</td>
+            <td><input type="number" id="placaMae" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Memória RAM</td>
+            <td><input type="number" id="memoriaRam" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Fonte de Alimentação</td>
+            <td><input type="number" id="fonteAlimentacao" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>SSD</td>
+            <td><input type="number" id="ssd" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>HD</td>
+            <td><input type="number" id="hd" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Cooler</td>
+            <td><input type="number" id="cooler" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Placa de Vídeo</td>
+            <td><input type="number" id="placaVideo" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Gabinete</td>
+            <td><input type="number" id="gabinete" onchange="calcularTotal()"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td id="total">0</td>
+        </tr>
+    </table>
+
+    <script>
+        function calcularTotal() {
+            const componentes = [
+                'processador',
+                'placaMae',
+                'memoriaRam',
+                'fonteAlimentacao',
+                'ssd',
+                'hd',
+                'cooler',
+                'placaVideo',
+                'gabinete'
+            ];
+
+            let total = 0;
+            for (const componente of componentes) {
+                const valor = parseFloat(document.getElementById(componente).value) || 0;
+                total += valor;
+            }
+
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
